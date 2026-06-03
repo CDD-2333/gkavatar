@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RDFZ 高考加油头像生成 - 2025 - 客页 | KEEER</title>
+    <script>
+      // bypass vercel's alias of /2025 and /2025/
+      if (location.href.startsWith('https') && !location.pathname.endsWith('.html') && !location.pathname.endsWith('/')) location.href = location.href.replace(location.pathname, location.pathname + '/')
+    </script>
+
+    <link rel="preload" href="bundle.js" as="script">
+    <link rel="preload" href="main.es5.js" as="script">
+    <link rel="preload" href="https://keeer.net/img/logo/dark-large.svg" as="image">
+    <link rel="preload" href="https://keeer-pub.oss-cn-beijing.aliyuncs.com/rdfzgkavt/2020/banner.jpg" as="image">
+    <link rel="preconnect" href="https://umami.keeer.net">
+    <link rel="preconnect" href="https://keeer-pub.oss-cn-beijing.aliyuncs.com" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="bundle.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../years.css">
+
+    <meta name="description" content="为 2025 届高考的 RDFZer 们加油。">
+  </head>
+  <body class="mdc-typography">
+    <script>
+      if (/iP(hone|ad|od)/i.test(navigator.userAgent)) document.body.classList.add('buggy-safari')
+    </script>
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <span class="mdc-top-app-bar__title">RDFZ 高考加油头像生成 - 2025</span>
+        </section>
+      </div>
+    </header>
+    <main class="mdc-top-app-bar--fixed-adjust">
+      <div id="step-select">
+        <p id="banner"><button id="upload-avatar" class="mdc-button mdc-button--raised umami--click--upload">选择你的头像</button></p>
+        <input type="file" id="image" accept="image/*" hidden>
+        <div id="about">
+          <h2 class="mdc-typography--headline4">版权</h2>
+          <p class="mdc-typography--body1">Cover: 追 / Alan-Liang</p>
+          <p class="mdc-typography--body1">程序: Alan-Liang @ KEEER, 2025</p>
+          <p class="mdc-typography--body1">联系: <a href="mailto:gka@altk.org">gka@altk.org</a></p>
+          <p class="mdc-typography--body1"><strong>欢迎同学、校友们加入高考加油头像项目组！</strong></p>
+          <h2 class="mdc-typography--headline4">隐私</h2>
+          <p class="mdc-typography--body1">
+            我们不上传您的头像到我们的服务器（我们也没有那些带宽），而是下载一个头像的 Cover 到您的设备上进行合成。
+            我们仅收集您使用的情况，并进行统计，使我们的服务更好。
+          </p>
+          <p class="mdc-typography--body1">
+            由于 GDPR 条款的限制，我们禁止欧盟地区用户使用本项目。
+          </p>
+          <h2 class="mdc-typography--headline4">版本</h2>
+          <div class="years mdc-typography--body1">
+            <a class="years__link years__last mdc-ripple-surface" href="https://services.keeer.net/gkavatar/2024/?utm_source=gk25" data-ripple>← 2024</a>
+            <div class="years__next years__disabled">来年再会！</div>
+          </div>
+          <a href="https://keeer.net/" id="logolink" aria-label="KEEER"><img src="https://keeer.net/img/logo/dark-large.svg" width="128px" alt="KEEER Logo" /></a>
+        </div>
+      </div>
+      <div id="step-crop" style="display: none;">
+        <p class="mdc-typography--body1">您可以裁剪上传的图片：</p>
+        <div id="crop-container">
+          <div id="crop-canvas-container">
+            <img id="crop-image">
+          </div>
+        </div>
+        <p>
+          <button id="crop" class="mdc-button mdc-button--raised umami--click--crop">裁剪</button>
+          <button id="back-2" class="mdc-button umami--click--back-2">返回</button>
+        </p>
+      </div>
+      <div id="step-edit" style="display: none;">
+        <canvas id="paint-canvas" width="1024" height="1024" hidden></canvas>
+        <br>
+        <div id="styles">
+          <p class="mdc-typography--body1">您可以选择下面的几个样式：</p>
+          <div id="styles-container">
+            <div id="style-full" role="button" class="style__container mdc-card mdc-card--outlined mdc-ripple-surface umami--click--style-full" data-ripple>
+              <img class="style__bg style__bg--filter" alt="Avatar">
+              <img class="style__fg" data-src="data:image/webp;base64,UklGRhwAAABXRUJQVlA4TBAAAAAv/8P/EAcQERG8iIiIiP4H" alt="Empty picture">
+              <img class="cover-1-open-full style__fg style__fg-overlay" data-src="cover/1-open-full.webp" alt="Cover style 1, layer 1 (open)">
+              <img class="cover-1-closed-full style__fg style__fg-overlay" style="display: none" data-src="cover/1-closed-full.webp" alt="Cover style 1, layer 1 (closed)">
+              <img class="cover-2-left style__fg style__fg-overlay" data-src="cover/2-left.webp" alt="Cover style 1, layer 2 (left)">
+              <img class="cover-2-right style__fg style__fg-overlay" style="display: none;" data-src="cover/2-right.webp" alt="Cover style 1, layer 2 (right)">
+              <img class="cover-3-left style__fg style__fg-overlay" data-src="cover/3-left.webp" alt="Cover style 1, layer 3 (left)">
+              <img class="cover-3-right style__fg style__fg-overlay" data-src="cover/3-right.webp" alt="Cover style 1, layer 3 (right)">
+              <img class="cover-4 style__fg style__fg-overlay" data-src="cover/4.webp" alt="Cover style 1, layer 4">
+            </div>
+            <div id="style-framed" role="button" class="style__container mdc-card mdc-card--outlined mdc-ripple-surface umami--click--style-framed" data-ripple>
+              <img class="style__bg style__bg--small" alt="Avatar">
+              <img class="style__fg" data-src="data:image/webp;base64,UklGRhwAAABXRUJQVlA4TBAAAAAv/8P/EAcQERG8iIiIiP4H" alt="Empty picture">
+              <img class="cover-1-open-framed style__fg style__fg-overlay" data-src="cover/1-open-framed.webp" alt="Cover style 2, layer 1 (open)">
+              <img class="cover-1-closed-framed style__fg style__fg-overlay" style="display: none;" data-src="cover/1-closed-framed.webp" alt="Cover style 2, layer 1 (closed)">
+              <img class="cover-2-left style__fg style__fg-overlay" data-src="cover/2-left.webp" alt="Cover style 2, layer 2 (left)">
+              <img class="cover-2-right style__fg style__fg-overlay" style="display: none;" data-src="cover/2-right.webp" alt="Cover style 2, layer 2 (right)">
+              <img class="cover-3-left style__fg style__fg-overlay" data-src="cover/3-left.webp" alt="Cover style 2, layer 3 (left)">
+              <img class="cover-3-right style__fg style__fg-overlay" data-src="cover/3-right.webp" alt="Cover style 2, layer 3 (right)">
+              <img class="cover-4 style__fg style__fg-overlay" data-src="cover/4.webp" alt="Cover style 2, layer 4">
+            </div>
+          </div>
+        </div>
+        <div id="toggle-container">
+          <p class="mdc-typography--body1">您可以点击下方图片中的装饰元素以显示/隐藏对应的元素。</p>
+<svg
+   version="1.1"
+   viewBox="0 0 1024 1024"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <style>
+   .maplayer {
+     transition: filter 0.3s ease;
+     transition-property: filter, opacity;
+   }
+   .maplayer.disabled {
+     filter: grayscale(0.8) opacity(0.4);
+   }
+   .maplayer.transparent {
+     opacity: 0;
+   }
+  </style>
+  <image class="map__bg" id="map-bg-full" width="1024" height="1024" x="0" y="0" />
+  <image class="map__bg" style="display: none;" id="map-bg-framed" width="850" height="850" x="88" y="87" />
+  <image class="maplayer" id="maplayer-1-open-full" width="1024" height="1024" data-href="cover/1-open-full.webp" x="0" y="0" />
+  <image class="maplayer transparent" id="maplayer-1-closed-full" width="1024" height="1024" data-href="cover/1-closed-full.webp" x="0" y="0" />
+  <image class="maplayer transparent" id="maplayer-1-open-framed" width="1024" height="1024" data-href="cover/1-open-framed.webp" x="0" y="0" />
+  <image class="maplayer transparent" id="maplayer-1-closed-framed" width="1024" height="1024" data-href="cover/1-closed-framed.webp" x="0" y="0" />
+  <image class="maplayer" id="maplayer-2-left" width="1024" height="1024" data-href="cover/2-left.webp" x="0" y="0" />
+  <image class="maplayer disabled" id="maplayer-2-right" width="1024" height="1024" data-href="cover/2-right.webp" x="0" y="0" />
+  <image class="maplayer" id="maplayer-3-left" width="1024" height="1024" data-href="cover/3-left.webp" x="0" y="0" />
+  <image class="maplayer" id="maplayer-3-right" width="1024" height="1024" data-href="cover/3-right.webp" x="0" y="0" />
+  <image class="maplayer" id="maplayer-4" width="1024" height="1024" data-href="cover/4.webp" x="0" y="0" />
+  <a xlink:href="" id="maparea-1" opacity="0">
+   <path
+      style="fill:#d98080;fill-opacity:0.5"
+      d="M 0,540 H 200 V 200 h 624 v 310 h 200 V 0 H 0 Z" />
+  </a>
+  <a xlink:href="" id="maparea-2-left" opacity="0">
+   <path
+      style="fill:#d98080;fill-opacity:0.5"
+      d="m 200.11268,802.25352 110.88941,-110.61029 114.09665,-18.65931 22.3592,190.0889 -106.12461,-0.42493 -105.76525,9.91549 -46.57277,0.60094 -7.21127,-9.01408 z" />
+  </a>
+  <a xlink:href="" id="maparea-2-right" opacity="0">
+   <path
+      style="fill:#d98080;fill-opacity:0.5"
+      d="m 818.47887,862.94836 -0.60094,-21.03287 -4.95774,-31.69953 -17.7277,-43.11737 -91.7669,-80.25036 -119.50875,-27.12768 -14.82764,192.41091 84.7324,10.8169 z" />
+  </a>
+  <a xlink:href="" id="maparea-3-left" opacity="0">
+   <path
+      style="fill:#d98080;fill-opacity:0.5"
+      d="m 0,584 h 310 v 105.87793 l -110.57277,111.77465 -18.25285,61.50253 -59.75915,0.25595 -21.36641,79.51817 -17.745684,-0.48105 0.312955,53.07164 78.696499,0.0511 -3.95109,29.63098 L 0,1024 Z" />
+  </a>
+  <a xlink:href="" id="maparea-3-right" opacity="0">
+   <path
+      style="fill:#d98080;fill-opacity:0.5"
+      d="m 704,554 h 320 v 470 H 828.99531 l -2.36436,-28.67651 107.38872,-0.0877 0.20292,-131.85639 -113.89295,0.42724 -1.66728,-23.60049 -5.23796,-31.0818 L 795.34272,766.79812 704,686.2723 Z" />
+   </a>
+  <a xlink:href="" id="maparea-4" opacity="0">
+   <path
+      style="fill:#d98080;fill-opacity:0.5"
+      d="m 82.779346,943.02345 17.727694,0.60094 21.63381,-79.47418 h 52.13145 l 14.12206,9.91549 46.87964,-0.50138 107.56168,-9.41411 h 591.02347 v 131.0047 H 796.74004 l 0.39411,29.13189 -608.89104,0.1881 -0.42493,-29.31999 H 82.929581 Z" />
+  </a>
+</svg>
+        </div>
+        <button id="save" class="mdc-button mdc-button--raised umami--click--save">生成</button>
+        <button id="back-1" class="mdc-button umami--click--back-1">返回</button>
+        <p id="save-status" style="display: none;" class="mdc-typography--body1"></p>
+      </div>
+      <div id="step-save" style="display: none;">
+        <p>请长按或右键点击下方图片保存。</p>
+        <img id="result-image" alt="Generated avatar">
+        <p><button id="back" class="mdc-button mdc-button--outlined umami--click--back">返回</button></p>
+      </div>
+    </main>
+    <script src="bundle.js"></script>
+    <script src="main.es5.js"></script>
+    <script async defer data-cache data-do-not-track data-website-id="5fc91781-24a6-4e9c-9211-e12db6cf3393" src="https://umami.keeer.net/umami.js"></script>
+  </body>
+</html>

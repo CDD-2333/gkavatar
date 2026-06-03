@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.17.10",
+    "cropperjs": "^1.5.13"
+  }
+}

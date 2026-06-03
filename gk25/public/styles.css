@@ -1,0 +1,130 @@
+html, body { margin: 0; }
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  --mdc-theme-primary: #c62828;
+  color: #44444f;
+}
+.mdc-top-app-bar__section.mdc-top-app-bar__section--align-start {
+  max-width: 720px;
+}
+.mdc-top-app-bar__row {
+  justify-content: center;
+}
+
+@media (max-width: 720px) {
+  #crop-canvas-container {
+    width: 90%;
+    margin: auto;
+  }
+}
+#crop-image {
+  width: 100%;
+}
+
+#styles-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px auto;
+  flex-wrap: wrap;
+  max-width: 500px;
+}
+.style__container {
+  width: 44%;
+  margin: 8px;
+  position: relative;
+  background: transparent;
+  transition: border-color,border-width ease .3s;
+  will-change: border-color, border-width;
+}
+/* @media (min-width: 720px) { .style__container { width: 155px; } }
+@media (max-width: 680px) { .style__container { width: 44%; } } */
+@media (max-width: 320px) { .style__container { width: 100%; } }
+.style__container.style__current {
+  border-color: #add8e6;
+  border-width: 3px;
+}
+.style__bg {
+  position: absolute;
+  z-index: -2;
+}
+#styles-container .style__bg.style__bg--small {
+  width: 83.1%;
+  height: 83.1%;
+  top: 8.4%;
+  left: 8.56%;
+}
+.style__fg {
+  position: relative;
+  z-index: -1;
+}
+.style__fg-overlay {
+  position: absolute;
+}
+.buggy-safari .style__fg {
+  z-index: 999;
+  -webkit-transform: translate3d(0, 0, 1px);
+}
+.style__label {
+  text-align: left;
+  position: relative;
+  top: 12px;
+  user-select: none;
+}
+.style__label--hint {
+  top: 6px;
+  margin-bottom: 24px;
+  display: flex;
+}
+.style__label--hint__spacer {
+  flex: 1;
+}
+.mdc-slider {
+  margin-bottom: -18px;
+}
+#styles-container img { width: 100%; height: 100%; }
+#result-image { max-width: 512px; width: 100%; }
+a:link { text-decoration: none; }
+a:link:hover { text-decoration: underline; }
+#logolink { text-decoration: none !important; }
+[hidden] { display: none; }
+#upload-avatar { margin: 100px 0; }
+main {
+  text-align: center;
+  width: 100%;
+  max-width: 720px;
+}
+main > div { margin: 16px; }
+#step-select { margin: 0; }
+#about { margin: 16px; }
+#edit-tab-bar {
+  display: inline-block;
+  width: auto;
+}
+#positions-container {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  position: relative;
+}
+#positions-container > .mdc-button {
+  padding: 0;
+  min-width: 0;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+}
+#toggle-container svg {
+  width: 100%;
+  max-width: 500px;
+}
+#save { margin: 16px 0; }
+#banner {
+  margin: 0;
+  background-image: url('https://keeer-pub.oss-cn-beijing.aliyuncs.com/rdfzgkavt/2020/banner.jpg');
+  background-position: center;
+  background-size: cover;
+}
+.canvas-container { display: inline-block; }

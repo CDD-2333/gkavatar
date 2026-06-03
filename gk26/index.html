@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RDFZ 高考加油头像生成 - 2026</title>
+    <script>
+      // bypass vercel's alias of /2026 and /2026/
+      if (location.href.startsWith('https') && !location.pathname.endsWith('.html') && !location.pathname.endsWith('/')) location.href = location.href.replace(location.pathname, location.pathname + '/')
+    </script>
+
+    <link rel="preload" href="bundle.js" as="script">
+    <link rel="preload" href="main.es5.js" as="script">
+    <link rel="preload" href="https://keeer.net/img/logo/dark-large.svg" as="image">
+    <link rel="preload" href="https://keeer-pub.oss-cn-beijing.aliyuncs.com/rdfzgkavt/2020/banner.jpg" as="image">
+    <link rel="preconnect" href="https://umami.keeer.net">
+    <link rel="preconnect" href="https://keeer-pub.oss-cn-beijing.aliyuncs.com" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="bundle.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="years.css">
+
+    <meta name="description" content="为 2026 届高考的 RDFZer 们加油。">
+  </head>
+  <body class="mdc-typography">
+    <script>
+      if (/iP(hone|ad|od)/i.test(navigator.userAgent)) document.body.classList.add('buggy-safari')
+    </script>
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <span class="mdc-top-app-bar__title">RDFZ 高考加油头像生成 - 2026</span>
+        </section>
+      </div>
+    </header>
+    <main class="mdc-top-app-bar--fixed-adjust">
+      <div id="step-select">
+        <p id="banner"><button id="upload-avatar" class="mdc-button mdc-button--raised umami--click--upload">选择你的头像</button></p>
+        <input type="file" id="image" accept="image/*" hidden>
+        <div id="about">
+          <h2 class="mdc-typography--headline4">版权</h2>
+          <p class="mdc-typography--body1">Cover: 追 猹 / Alan-Liang</p>
+          <p class="mdc-typography--body1">程序: Alan-Liang @ KEEER, Coderdiao @CDD-2333</p>
+          <p class="mdc-typography--body1">联系: <a href="mailto:gka@altk.org">gka@altk.org</a> / <a href="mailto:coderdiaocdd@gmail.com">coderdiaocdd@gmail.com</a></p>
+          <p class="mdc-typography--body1"><strong>欢迎同学、校友们加入高考加油头像项目组！</strong></p>
+          <h2 class="mdc-typography--headline4">隐私</h2>
+          <p class="mdc-typography--body1">
+            我们不上传您的头像到我们的服务器（我们也没有那些带宽），而是下载一个头像的 Cover 到您的设备上进行合成。
+            我们仅收集您使用的情况，并进行统计，使我们的服务更好。
+          </p>
+          <p class="mdc-typography--body1">
+            由于 GDPR 条款的限制，我们禁止欧盟地区用户使用本项目。
+          </p>
+          <h2 class="mdc-typography--headline4">版本</h2>
+          <div class="years mdc-typography--body1">
+            <a class="years__link years__last mdc-ripple-surface" href="https://services.keeer.net/gkavatar/2025/?utm_source=gk26" data-ripple>← 2025</a>
+            <a class="years__link years__next mdc-ripple-surface" href="https://services.keeer.net/gkavatar/2026/?utm_source=gk26" data-ripple>2026 →</a>
+          </div>
+          <a href="https://keeer.net/" id="logolink" aria-label="KEEER"><img src="https://keeer.net/img/logo/dark-large.svg" width="128px" alt="KEEER Logo" /></a>
+        </div>
+      </div>
+      <div id="step-crop" style="display: none;">
+        <p class="mdc-typography--body1">您可以裁剪上传的图片：</p>
+        <div id="crop-container">
+          <div id="crop-canvas-container">
+            <img id="crop-image">
+          </div>
+        </div>
+        <p>
+          <button id="crop" class="mdc-button mdc-button--raised umami--click--crop">裁剪</button>
+          <button id="back-2" class="mdc-button umami--click--back-2">返回</button>
+        </p>
+      </div>
+      <div id="step-edit" style="display: none;">
+        <canvas id="paint-canvas" width="1024" height="1024" hidden></canvas>
+        <br>
+        <div id="styles">
+          <p class="mdc-typography--body1">您可以选择下面的几个样式：</p>
+          <div id="styles-container">
+            <div id="style-full" role="button" class="style__container mdc-card mdc-card--outlined mdc-ripple-surface umami--click--style-full" data-ripple>
+              <img class="style__bg style__bg--filter" alt="Avatar">
+              <img class="style__fg" data-src="data:image/webp;base64,UklGRhwAAABXRUJQVlA4TBAAAAAv/8P/EAcQERG8iIiIiP4H" alt="Empty picture">
+              <img class="pv-frame style__fg style__fg-overlay" data-src="cover/frame.webp" alt="Frame">
+              <img class="pv-clover style__fg style__fg-overlay" data-src="cover/clover.webp" alt="Clover">
+              <img class="pv-characters style__fg style__fg-overlay" data-src="cover/characters.webp" alt="Characters">
+              <img class="pv-buildings style__fg style__fg-overlay" style="display:none" data-src="cover/buildings.webp" alt="Buildings">
+              <img class="pv-starframe style__fg style__fg-overlay" style="display:none" data-src="cover/starframe.webp" alt="Star frame">
+              <img class="pv-slogan-big style__fg style__fg-overlay" data-src="cover/slogan-big.webp" alt="Slogan (big)">
+              <img class="pv-slogan-small style__fg style__fg-overlay" style="display:none" data-src="cover/slogan-small.webp" alt="Slogan (small)">
+            </div>
+            <div id="style-framed" role="button" class="style__container mdc-card mdc-card--outlined mdc-ripple-surface umami--click--style-framed" data-ripple>
+              <img class="style__bg style__bg--small" alt="Avatar">
+              <img class="style__fg" data-src="data:image/webp;base64,UklGRhwAAABXRUJQVlA4TBAAAAAv/8P/EAcQERG8iIiIiP4H" alt="Empty picture">
+              <img class="pv-frame style__fg style__fg-overlay" data-src="cover/frame.webp" alt="Frame">
+              <img class="pv-clover style__fg style__fg-overlay" style="display:none" data-src="cover/clover.webp" alt="Clover">
+              <img class="pv-characters style__fg style__fg-overlay" style="display:none" data-src="cover/characters.webp" alt="Characters">
+              <img class="pv-buildings style__fg style__fg-overlay" data-src="cover/buildings.webp" alt="Buildings">
+              <img class="pv-starframe style__fg style__fg-overlay" data-src="cover/starframe.webp" alt="Star frame">
+              <img class="pv-slogan-big style__fg style__fg-overlay" style="display:none" data-src="cover/slogan-big.webp" alt="Slogan (big)">
+              <img class="pv-slogan-small style__fg style__fg-overlay" data-src="cover/slogan-small.webp" alt="Slogan (small)">
+            </div>
+          </div>
+        </div>
+        <div id="toggle-container">
+          <p class="mdc-typography--body1">您可以点击下方图片中的装饰元素以显示/隐藏对应的元素。</p>
+<svg
+   version="1.1"
+   viewBox="0 0 1024 1024"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <style>
+   .maplayer {
+     transition: filter 0.3s ease;
+     transition-property: filter, opacity;
+   }
+   .maplayer.disabled {
+     filter: grayscale(0.8) opacity(0.4);
+   }
+   .maplayer.transparent {
+     opacity: 0;
+   }
+  </style>
+  <image class="map__bg" id="map-bg-full" width="1024" height="1024" x="0" y="0" />
+  <image class="map__bg" style="display: none;" id="map-bg-framed" width="850" height="850" x="88" y="87" />
+  <!-- Layer order (bottom to top): frame → starframe → buildings → clover → characters → slogan -->
+  <image class="maplayer" id="maplayer-frame" width="1024" height="1024" data-href="cover/frame.webp" x="0" y="0" />
+  <image class="maplayer disabled" id="maplayer-starframe" width="1024" height="1024" data-href="cover/starframe.webp" x="0" y="0" />
+  <image class="maplayer disabled" id="maplayer-buildings" width="1024" height="1024" data-href="cover/buildings.webp" x="0" y="0" />
+  <image class="maplayer" id="maplayer-clover" width="1024" height="1024" data-href="cover/clover.webp" x="0" y="0" />
+  <image class="maplayer" id="maplayer-characters" width="1024" height="1024" data-href="cover/characters.webp" x="0" y="0" />
+  <image class="maplayer" id="maplayer-slogan-big" width="1024" height="1024" data-href="cover/slogan-big.webp" x="0" y="0" />
+  <image class="maplayer disabled" id="maplayer-slogan-small" width="1024" height="1024" data-href="cover/slogan-small.webp" x="0" y="0" />
+
+  <!-- 3 non-overlapping click zones (top→bottom) -->
+  <!-- Top zone: toggles slogan (big in Theme A, small in Theme B) -->
+  <a xlink:href="#!" pointer-events="all" id="maparea-slogan" opacity="0">
+   <path style="fill:#d98080;fill-opacity:0.5"
+      d="M 0,0 H 1024 V 320 H 0 Z" />
+  </a>
+  <!-- Middle zone: toggles clover (Theme A) or starframe (Theme B) -->
+  <a xlink:href="#!" pointer-events="all" id="maparea-deco" opacity="0">
+   <path style="fill:#d98080;fill-opacity:0.5"
+      d="M 0,320 H 1024 V 580 H 0 Z" />
+  </a>
+  <!-- Bottom zone: toggles characters (Theme A) or buildings (Theme B) -->
+  <a xlink:href="#!" pointer-events="all" id="maparea-content" opacity="0">
+   <path style="fill:#d98080;fill-opacity:0.5"
+      d="M 0,580 H 1024 V 1024 H 0 Z" />
+  </a>
+</svg>
+        </div>
+        <button id="save" class="mdc-button mdc-button--raised umami--click--save">生成</button>
+        <button id="back-1" class="mdc-button umami--click--back-1">返回</button>
+        <p id="save-status" style="display: none;" class="mdc-typography--body1"></p>
+      </div>
+      <div id="step-save" style="display: none;">
+        <p>请长按或右键点击下方图片保存。</p>
+        <img id="result-image" alt="Generated avatar">
+        <p><button id="back" class="mdc-button mdc-button--outlined umami--click--back">返回</button></p>
+      </div>
+    </main>
+    <script src="bundle.js"></script>
+    <script src="main.es5.js"></script>
+    <script async defer data-cache data-do-not-track data-website-id="5fc91781-24a6-4e9c-9211-e12db6cf3393" src="https://umami.keeer.net/umami.js"></script>
+  </body>
+</html>

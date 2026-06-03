@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   viewBox="0 0 1024 1024"
+   width="1024"
+   height="1024"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <style>
+   .maplayer image {
+     transition: filter 0.3s ease;
+   }
+   .maplayer.disabled image {
+     filter: grayscale(0.8) opacity(0.4);
+   }
+   .maplayer__hidden {
+     display: none;
+   }
+   a:hover ~ image {
+     filter: drop-shadow(16px 12px 3px #dd7766);
+   }
+   .maplayer.disabled a:hover ~ image {
+     filter: drop-shadow(16px 12px 3px #dd7766) grayscale(0.8) opacity(0.4);
+   }
+  </style>
+  <g class="maplayer" id="maplayer-1">
+   <a xlink:href="" opacity="0">
+    <path
+       style="fill:#d98080;fill-opacity:0.5"
+       d="M 0,540 H 200 V 200 h 624 v 310 h 200 V 0 H 0 Z" />
+   </a>
+   <image id="maplayer-1-open-full" width="1024" height="1024" xlink:href="1-open-full.png" x="0" y="0" />
+   <image class="maplayer__hidden" id="maplayer-1-closed-full" width="1024" height="1024" xlink:href="1-closed-full.png" x="0" y="0" />
+   <image class="maplayer__hidden" id="maplayer-1-open-framed" width="1024" height="1024" xlink:href="1-open-framed.png" x="0" y="0" />
+   <image class="maplayer__hidden" id="maplayer-1-closed-framed" width="1024" height="1024" xlink:href="1-closed-framed.png" x="0" y="0" />
+  </g>
+  <g class="maplayer" id="maplayer-2-left">
+   <a xlink:href="" opacity="0">
+    <path
+       style="fill:#d98080;fill-opacity:0.5"
+       d="m 200.11268,802.25352 110.88941,-110.61029 114.09665,-18.65931 22.3592,190.0889 -106.12461,-0.42493 -105.76525,9.91549 -46.57277,0.60094 -7.21127,-9.01408 z" />
+   </a>
+   <image width="1024" height="1024" xlink:href="2-left.png" x="0" y="0" />
+  </g>
+  <g class="maplayer" id="maplayer-2-right">
+   <a xlink:href="" opacity="0">
+    <path
+       style="fill:#d98080;fill-opacity:0.5"
+       d="m 818.47887,862.94836 -0.60094,-21.03287 -4.95774,-31.69953 -17.7277,-43.11737 -91.7669,-80.25036 -119.50875,-27.12768 -14.82764,192.41091 84.7324,10.8169 z" />
+   </a>
+   <image width="1024" height="1024" xlink:href="2-right.png" x="0" y="0" />
+  </g>
+  <g class="maplayer" id="maplayer-3-left">
+   <a xlink:href="" opacity="0">
+    <path
+       style="fill:#d98080;fill-opacity:0.5"
+       d="m 0,584 h 310 v 105.87793 l -110.57277,111.77465 -18.25285,61.50253 -59.75915,0.25595 -21.36641,79.51817 -17.745684,-0.48105 0.312955,53.07164 78.696499,0.0511 -3.95109,29.63098 L 0,1024 Z" />
+   </a>
+   <image width="1024" height="1024" xlink:href="3-left.png" x="0" y="0" />
+  </g>
+  <g class="maplayer" id="maplayer-3-left">
+   <a xlink:href="" opacity="0">
+    <path
+       style="fill:#d98080;fill-opacity:0.5"
+       d="m 704,554 h 320 v 470 H 828.99531 l -2.36436,-28.67651 107.38872,-0.0877 0.20292,-131.85639 -113.89295,0.42724 -1.66728,-23.60049 -5.23796,-31.0818 L 795.34272,766.79812 704,686.2723 Z" />
+   </a>
+   <image width="1024" height="1024" xlink:href="3-right.png" x="0" y="0" />
+  </g>
+  <g class="maplayer" id="maplayer-4">
+   <a xlink:href="" opacity="0">
+    <path
+       style="fill:#d98080;fill-opacity:0.5"
+       d="m 82.779346,943.02345 17.727694,0.60094 21.63381,-79.47418 h 52.13145 l 14.12206,9.91549 46.87964,-0.50138 107.56168,-9.41411 h 591.02347 v 131.0047 H 796.74004 l 0.39411,29.13189 -608.89104,0.1881 -0.42493,-29.31999 H 82.929581 Z" />
+   </a>
+   <image width="1024" height="1024" xlink:href="4.png" x="0" y="0" />
+  </g>
+</svg>
