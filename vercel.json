@@ -1,6 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/2025/:path*", "destination": "/gk25/:path*" },
-    { "source": "/2026/:path*", "destination": "/gk26/:path*" }
-  ]
-}

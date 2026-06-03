@@ -3,3 +3,8 @@ node_modules/
 *.psb
 .DS_Store
 Thumbs.db
+gk24/
+gk26/
+gk26-reminder/
+RDFZ*/
+vercel.json
