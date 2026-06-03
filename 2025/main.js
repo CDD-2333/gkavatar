@@ -308,7 +308,6 @@ setTimeout(() => $$('.style__fg').forEach(img => {
   img.addEventListener('error', () => {
     if (!errorReported) {
       errorReported = true
-      alert('无法加载图片，请刷新或更换网络环境重试。')
       sendEvent('image-error')
     }
   })
@@ -323,7 +322,6 @@ setTimeout(() => $$('.maplayer').forEach(img => {
   img.addEventListener('error', () => {
     if (!errorReported) {
       errorReported = true
-      alert('无法加载图片，请刷新或更换网络环境重试。')
       sendEvent('image-error')
     }
   })

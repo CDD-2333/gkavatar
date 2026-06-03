@@ -502,7 +502,6 @@ setTimeout(function () {
     img.addEventListener('error', function () {
       if (!errorReported) {
         errorReported = true;
-        alert('无法加载图片，请刷新或更换网络环境重试。');
         sendEvent('image-error');
       }
     });
@@ -519,7 +518,6 @@ setTimeout(function () {
     img.addEventListener('error', function () {
       if (!errorReported) {
         errorReported = true;
-        alert('无法加载图片，请刷新或更换网络环境重试。');
         sendEvent('image-error');
       }
     });

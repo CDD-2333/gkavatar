@@ -7,6 +7,10 @@
     <script>
       // bypass vercel's alias of /2025 and /2025/
       if (location.href.startsWith('https') && !location.pathname.endsWith('.html') && !location.pathname.endsWith('/')) location.href = location.href.replace(location.pathname, location.pathname + '/')
+      // FIXME: disable sharing
+      setTimeout(() => {
+        // if (window.WeixinJSBridge) WeixinJSBridge.call('hideOptionMenu')
+      }, 500)
     </script>
 
     <link rel="preload" href="bundle.js" as="script">
@@ -38,8 +42,6 @@
         <p id="banner"><button id="upload-avatar" class="mdc-button mdc-button--raised umami--click--upload">选择你的头像</button></p>
         <input type="file" id="image" accept="image/*" hidden>
         <div id="about">
-          <h1 style="color:#a00">PREVIEW VERSION</h1>
-          <h1 style="color:#a00">链接禁止外传</h1>
           <h2 class="mdc-typography--headline4">版权</h2>
           <p class="mdc-typography--body1">Cover: 追 / Alan-Liang</p>
           <p class="mdc-typography--body1">程序: Alan-Liang @ KEEER, 2025</p>
@@ -56,7 +58,7 @@
           <h2 class="mdc-typography--headline4">版本</h2>
           <div class="years mdc-typography--body1">
             <a class="years__link years__last mdc-ripple-surface" href="https://services.keeer.net/gkavatar/2024/?utm_source=gk25" target="_blank" rel="noopener" data-ripple>← 2024</a>
-            <a class="years__link years__next mdc-ripple-surface" href="/2026/?utm_source=gk25" data-ripple>2026 →</a>
+            <div class="years__next years__disabled">来年再会！</div>
           </div>
           <a href="https://keeer.net/" id="logolink" aria-label="KEEER"><img src="https://keeer.net/img/logo/dark-large.svg" width="128px" alt="KEEER Logo" /></a>
         </div>
@@ -178,6 +180,6 @@
     </main>
     <script src="bundle.js"></script>
     <script src="main.es5.js"></script>
-    <script async defer data-cache data-do-not-track data-website-id="5fc91781-24a6-4e9c-9211-e12db6cf3393" src="https://umami.keeer.net/umami.js"></script>
+    <!-- <script async defer data-cache data-do-not-track data-website-id="500f93de-9a21-4b6b-9616-8f1ac8ed277f" src="https://umami.keeer.net/umami.js"></script> -->
   </body>
 </html>
